@@ -4,6 +4,7 @@ VoucherCodeResponse:
     id:
       type: integer
       format: int64
+      default: "*********AA11"
     code:
       type: string
     amount:
@@ -12,8 +13,10 @@ VoucherCodeResponse:
     dateClaimed:
       type: string
       format: date-time
+      default: null
     claimedBy:
       type: integer
       format: int64
+      default: null
     status:
       type: string
