@@ -1,0 +1,166 @@
+components:
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: apikey
+
+  schemas:
+    RedeemVoucherRequest:
+      $ref: './components/request/RedeemVoucherRequest.yaml#/RedeemVoucherRequest'
+    VoucherCodeResponse:
+      $ref: './components/response/VoucherCodeResponse.yaml#/VoucherCodeResponse'
+    ErrorResponse:
+      $ref: './components/response/ErrorResponse.yaml#/ErrorResponse'
+
+info:
+  title: Loyalty Wallet Activate Vouchers
+  description: |
+    This API Specification is meant to be used by external parties using
+    the Voucher activation functionality of the Loyalty Wallet.
+  version: 3.0.0
+openapi: 3.0.4
+
+servers:
+  - url: https://apigw-wallet-sbx.payconnect.io
+    description: Sandbox Environment
+
+tags:
+  name: Voucher Activation
+  description: OpenAPI Specification for Voucher Activation
+
+paths:
+  /api/v1/voucher/activate/{id}:
+    patch:
+      summary: Activate a voucher by passing its ID
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet voucher 
+        functionality. It allows them to activate a shared voucher code for their customers or clients.
+      tags:
+        - Voucher Activation
+      operationId: activate-voucherPATCH
+      parameters:
+        - description: The ID of the voucher code to be activated
+          in: path
+          name: id
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Voucher activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherCodeResponse'
+        '401':
+          description: "Missing API key found in request"
+        '404':
+          description: "Requested resource not found"
+          content:
+            application/json:
+              schema:
+                $ref: './components/response/ErrorResponse404.yaml#/ErrorResponse404'
+        '500':
+          description: "An unexpected error occurred. Please try again later"
+          content:
+            application/json:
+              schema:
+                $ref: './components/response/ErrorResponse500.yaml#/ErrorResponse500'
+      security:
+        - api_key: []
+      x-apisix-enable_websocket: false
+      x-apisix-plugins:
+        cors:
+          allow_credential: false
+          allow_headers: '*'
+          allow_methods: PATCH,OPTIONS
+          allow_origins: '*'
+          expose_headers: '*'
+          max_age: 3600
+      x-apisix-priority: 0
+      x-apisix-status: 1
+      x-apisix-upstream:
+        id: '2'
+        create_time: 1736837386
+        update_time: 1741340065
+        nodes:
+          - host: wallet-voucher-wallet-sbx.wallet-sbx.svc.cluster.local
+            port: 8002
+            weight: 1
+        timeout:
+          connect: 6
+          send: 6
+          read: 6
+        type: roundrobin
+        hash_on: vars
+        scheme: https
+        pass_host: pass
+        name: wallet-v2-voucher-be
+        keepalive_pool:
+          idle_timeout: 60
+          requests: 1000
+          size: 320
+
+  /api/v1/voucher/redeem:
+    post:
+      summary: Redeem a voucher by passing a request body
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet voucher 
+        functionality. It allows them to redeem a voucher code for their customers or clients.
+      tags:
+        - Voucher Activation
+      operationId: redeem-voucherPOST
+      requestBody:
+        description: The request body containing the voucher code and contact number
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedeemVoucherRequest'
+      responses:
+        '200':
+          description: Voucher redeemed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoucherCodeResponse'
+        '400':
+          description: "Validation Failed"
+          content:
+            application/json:
+              schema:
+                $ref: './components/response/ErrorResponse400.yaml#/ErrorResponse400'
+      security: []
+      x-apisix-enable_websocket: false
+      x-apisix-plugins:
+        cors:
+          allow_credential: false
+          allow_headers: '*'
+          allow_methods: POST,OPTIONS
+          allow_origins: '*'
+          expose_headers: '*'
+          max_age: 3600
+      x-apisix-priority: 0
+      x-apisix-status: 1
+      x-apisix-upstream:
+        id: '2'
+        create_time: 1736837386
+        update_time: 1741340065
+        nodes:
+          - host: wallet-voucher-wallet-sbx.wallet-sbx.svc.cluster.local
+            port: 8002
+            weight: 1
+        timeout:
+          connect: 6
+          send: 6
+          read: 6
+        type: roundrobin
+        hash_on: vars
+        scheme: http
+        pass_host: pass
+        name: wallet-v2-voucher-be
+        keepalive_pool:
+          idle_timeout: 60
+          requests: 1000
+          size: 320

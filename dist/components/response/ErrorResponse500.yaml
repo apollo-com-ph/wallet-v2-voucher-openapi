@@ -1,0 +1,18 @@
+ErrorResponse500:
+  type: object
+  properties:
+    id:
+      type: integer
+      default: 500
+    message:
+      type: string
+      default: "An unexpected error occurred. Please try again later"
+    description:
+      type: string
+      default: "uri=/api/v1/voucher/activate/%7Bid%7D"
+    error:
+      type: string
+      default: "Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: \"{id}\""
+    timeStamp:
+      type: string
+      format: date-time

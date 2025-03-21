@@ -1,0 +1,16 @@
+ErrorResponse:
+  type: object
+  properties:
+    id:
+      type: integer
+    message:
+      type: string
+    description:
+      type: string
+    error:
+      type: object
+      additionalProperties:
+        type: string
+    timeStamp:
+      type: string
+      format: date-time

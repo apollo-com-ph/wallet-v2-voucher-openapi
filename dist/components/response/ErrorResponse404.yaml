@@ -1,0 +1,18 @@
+ErrorResponse404:
+  type: object
+  properties:
+    id:
+      type: integer
+      default: 404
+    message:
+      type: string
+      default: "Requested resource not found"
+    description:
+      type: string
+      default: "uri=/api/v1/voucher/activate/*"
+    error:
+      type: string
+      default: "Voucher code does not exists."
+    timeStamp:
+      type: string
+      format: date-time

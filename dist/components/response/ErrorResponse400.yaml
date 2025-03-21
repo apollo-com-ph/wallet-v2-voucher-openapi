@@ -1,0 +1,24 @@
+ErrorResponse400:
+  type: object
+  properties:
+    id:
+      type: integer
+      default: 400
+    message:
+      type: string
+      default: "Validation failed"
+    description:
+      type: string
+      default: "uri=/api/v1/voucher/redeem/"
+    error:
+      type: object
+      properties:
+        accountId:
+          type: string
+          example: "Account ID is required."
+        voucherCodeId:
+          type: string
+          example: "Voucher code ID is required."
+    timeStamp:
+      type: string
+      format: date-time

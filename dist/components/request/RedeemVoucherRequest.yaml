@@ -1,0 +1,13 @@
+RedeemVoucherRequest:
+  type: object
+  required:
+    - code
+    - contactNumber
+  properties:
+    code:
+      type: string
+      description: "The voucher code to be redeemed."
+    contactNumber:
+      type: string
+      pattern: "^[0-9]{10,15}$"
+      description: "The contact number of the user, containing 10 to 15 digits."
