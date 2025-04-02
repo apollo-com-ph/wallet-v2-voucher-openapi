@@ -99,4 +99,10 @@ paths:
             application/json:
               schema:
                 $ref: './components/response/ErrorResponse400.yaml#/ErrorResponse400'
+        '404':
+          description: "Validation Failed"
+          content:
+            application/json:
+              schema:
+                $ref: './components/response/ErrorResponse400.yaml#/ErrorResponse404'
       security: []
