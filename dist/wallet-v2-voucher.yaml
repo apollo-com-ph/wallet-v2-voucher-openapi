@@ -104,5 +104,5 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components/response/ErrorResponse400.yaml#/ErrorResponse404'
+                $ref: './components/response/ErrorResponse404.yaml#/ErrorResponse404'
       security: []
