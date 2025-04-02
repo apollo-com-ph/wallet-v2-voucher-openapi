@@ -100,7 +100,7 @@ paths:
               schema:
                 $ref: './components/response/ErrorResponse400.yaml#/ErrorResponse400'
         '404':
-          description: "Validation Failed"
+          description: "Requested resource not found"
           content:
             application/json:
               schema:
