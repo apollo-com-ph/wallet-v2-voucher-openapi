@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: https://apigw-wallet-sbx.payconnect.io
+    description: Sandbox Environment
+  - url: https://apigw-wallet-dev.payconnect.io
+    description: Development Environment
+
+tags:
+  - name: voucher-code-controller
+    description: The type Voucher code controller.
+
+security:
+  - bearerAuth: []
+  - api_key: []
+
+paths:
+  /api/v1/voucher/redeem:
+    post:
+      tags:
+        - voucher-code-controller
+      summary: Redeem voucher code response entity.
+      description: Redeem voucher code response entity.
+      operationId: redeemVoucherCode
+      requestBody:
+        description: the request
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoucherEventRequest'
+        required: true
+      responses:
+        '200':
+          description: the response entity
+  /api/v1/voucher/activate/{id}:
+    patch:
+      tags:
+        - voucher-code-controller
+      summary: Activate voucher code response entity.
+      description: Activate voucher code response entity.
+      operationId: activateVoucherCode
+      parameters:
+        - name: id
+          in: path
+          description: the id
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: the response entity
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/VoucherCodeResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    api_key:
+      type: apiKey
+      in: header
+      name: apikey
+
+  schemas:
+    VoucherEventRequest:
+      type: object
+      properties:
+        code:
+          type: string
+        contactNumber:
+          type: string
+          pattern: ^[0-9]{10,15}$
+      required:
+        - code
+        - contactNumber
+    VoucherCodeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        code:
+          type: string
+        amount:
+          type: number
+        dateClaimed:
+          type: string
+          format: date-time
+        claimedById:
+          type: integer
+          format: int64
+        status:
+          type: string

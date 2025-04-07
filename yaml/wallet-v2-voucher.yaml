@@ -7,11 +7,11 @@ components:
 
   schemas:
     RedeemVoucherRequest:
-      $ref: './components/request/RedeemVoucherRequest.yaml#/RedeemVoucherRequest'
+      $ref: '../components/request/RedeemVoucherRequest.yaml#/RedeemVoucherRequest'
     VoucherCodeResponse:
-      $ref: './components/response/VoucherCodeResponse.yaml#/VoucherCodeResponse'
+      $ref: '../components/response/VoucherCodeResponse.yaml#/VoucherCodeResponse'
     ErrorResponse:
-      $ref: './components/response/ErrorResponse.yaml#/ErrorResponse'
+      $ref: '../components/response/ErrorResponse.yaml#/ErrorResponse'
 
 info:
   title: Loyalty Wallet Vouchers Activation
@@ -60,13 +60,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components/response/ErrorResponse404.yaml#/ErrorResponse404'
+                $ref: '../components/response/ErrorResponse404.yaml#/ErrorResponse404'
         '500':
           description: "An unexpected error occurred. Please try again later"
           content:
             application/json:
               schema:
-                $ref: './components/response/ErrorResponse500.yaml#/ErrorResponse500'
+                $ref: '../components/response/ErrorResponse500.yaml#/ErrorResponse500'
       security:
         - api_key: []
 
@@ -98,11 +98,11 @@ paths:
           content:
             application/json:
               schema:
-                $ref: './components/response/ErrorResponse400.yaml#/ErrorResponse400'
+                $ref: '../components/response/ErrorResponse400.yaml#/ErrorResponse400'
         '404':
           description: "Requested resource not found"
           content:
             application/json:
               schema:
-                $ref: './components/response/ErrorResponse404.yaml#/ErrorResponse404'
+                $ref: '../components/response/ErrorResponse404.yaml#/ErrorResponse404'
       security: []
