@@ -1,0 +1,59 @@
+CreditAccountRequest:
+  type: object
+  properties:
+    contactNumber:
+      type: string
+      pattern: ^[0-9]{10,15}$
+    creditLimit:
+      type: number
+      minimum: 0
+    dayOfPayment:
+      type: string
+      enum:
+        - MONDAY
+        - TUESDAY
+        - WEDNESDAY
+        - THURSDAY
+        - FRIDAY
+        - SATURDAY
+        - SUNDAY
+    merchant:
+      type: string
+      enum:
+        - NW
+        - CK
+        - TNDY
+    organizationId:
+      type: integer
+      format: int64
+    member:
+      $ref: './MemberRequest.yaml#/MemberRequest'
+    currency:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+        numericCode:
+          type: integer
+          format: int32
+        numericCodeAsString:
+          type: string
+        displayName:
+          type: string
+        symbol:
+          type: string
+        defaultFractionDigits:
+          type: integer
+          format: int32
+    status:
+      type: string
+      enum:
+        - ACTIVE
+        - BLOCKED
+        - UNBLOCKED
+        - DOES_NOT_EXIST
+  required:
+    - contactNumber
+    - dayOfPayment
+    - merchant
+    - organizationId

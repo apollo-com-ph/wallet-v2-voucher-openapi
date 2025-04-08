@@ -1,0 +1,8 @@
+CreditAccountResponse:
+  type: object
+  properties:
+    account:
+      $ref: './AccountResponse.yaml#/AccountResponse'
+    creditLimit:
+      type: integer
+      format: int32

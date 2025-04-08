@@ -1,12 +1,15 @@
-ErrorResponse404:
+ErrorResponse406:
   type: object
   properties:
     id:
       type: integer
-      default: 404
+      default: 406
     message:
       type: string
-      default: "Requested resource not found"
+      enum:
+        - "Invalid requested voucher code"
+        - "Account permissions missing"
+        - "An attempt to process an unregistered account has been found"
     description:
       type: string
     error:

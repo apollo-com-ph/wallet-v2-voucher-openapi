@@ -1,0 +1,32 @@
+PageObject:
+  type: object
+  properties:
+    totalElements:
+      type: integer
+      format: int64
+    totalPages:
+      type: integer
+      format: int32
+    pageable:
+      $ref: './PageableObject.yaml#/PageableObject'
+    first:
+      type: boolean
+    last:
+      type: boolean
+    size:
+      type: integer
+      format: int32
+    content:
+      type: array
+      items:
+        $ref: '../response/TransactionResponse.yaml#/TransactionResponse'
+    number:
+      type: integer
+      format: int32
+    sort:
+      $ref: '../utils/SortObject.yaml#/SortObject'
+    numberOfElements:
+      type: integer
+      format: int32
+    empty:
+      type: boolean

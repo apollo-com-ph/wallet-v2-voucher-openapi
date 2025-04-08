@@ -1,18 +1,19 @@
-VoucherCodeResponse:
+TransactionResponse:
   type: object
   properties:
     id:
       type: integer
       format: int64
-    code:
+    currency:
       type: string
     amount:
       type: number
-    dateClaimed:
+    sourceAccountName:
+      type: string
+    destinationAccountName:
+      type: string
+    transactionDate:
       type: string
       format: date-time
-    claimedById:
-      type: integer
-      format: int64
-    status:
+    terminalId:
       type: string

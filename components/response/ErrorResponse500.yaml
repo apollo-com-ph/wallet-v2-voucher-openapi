@@ -6,13 +6,25 @@ ErrorResponse500:
       default: 500
     message:
       type: string
-      default: "An unexpected error occurred. Please try again later"
+      enum:
+        - "Encryption processes failed"
+        - "Kafka message processes failed"
+        - "An unexpected error occurred. Please try again later"
+        - "An eror occurred while processing your request"
+        - "Violation on duplicate entries"
+        - "Duplicate messages found"
+        - "There was an error processing the message"
     description:
       type: string
-      default: "uri=/api/v1/voucher/activate/%7Bid%7D"
     error:
-      type: string
-      default: "Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: \"{id}\""
+      type: object
+      properties:
+        details:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
     timeStamp:
       type: string
       format: date-time

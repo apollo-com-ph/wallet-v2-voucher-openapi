@@ -1,0 +1,10 @@
+CreditAccountDetailsResponse:
+  type: object
+  properties:
+    account:
+      $ref: './AccountResponse.yaml#/AccountResponse'
+    transactions:
+      $ref: '../utils/PageObject.yaml#/PageObject'
+    creditLimit:
+      type: integer
+      format: int32

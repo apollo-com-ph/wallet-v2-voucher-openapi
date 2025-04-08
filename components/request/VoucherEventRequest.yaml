@@ -1,0 +1,11 @@
+VoucherEventRequest:
+  type: object
+  properties:
+    code:
+      type: string
+    contactNumber:
+      type: string
+      pattern: ^[0-9]{10,15}$
+  required:
+    - code
+    - contactNumber

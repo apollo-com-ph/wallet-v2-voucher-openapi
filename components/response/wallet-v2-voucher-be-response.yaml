@@ -1,0 +1,36 @@
+'200':
+  description: Successful Operation
+  content:
+    '*/*':
+      schema:
+        $ref: './VoucherCodeResponse.yaml#/VoucherCodeResponse'
+'400':
+  description: Bad Request
+  content:
+    application/json:
+      schema:
+        $ref: './ErrorResponse400.yaml#/ErrorResponse400'
+'404':
+  description: Not Found
+  content:
+    application/json:
+      schema:
+        $ref: './ErrorResponse404.yaml#/ErrorResponse404'
+'406':
+  description: Not Acceptable
+  content:
+    application/json:
+      schema:
+        $ref: './ErrorResponse406.yaml#/ErrorResponse406'
+'409':
+  description: Conflict
+  content:
+    application/json:
+      schema:
+        $ref: './ErrorResponse409.yaml#/ErrorResponse409'
+'500':
+  description: Internal Server Error
+  content:
+    application/json:
+      schema:
+        $ref: './ErrorResponse500.yaml#/ErrorResponse500'

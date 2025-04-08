@@ -1,0 +1,31 @@
+MemberRequest:
+  type: object
+  properties:
+    firstName:
+      type: string
+      maxLength: 30
+      minLength: 0
+      pattern: ^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*$
+    middleName:
+      type: string
+      maxLength: 30
+      minLength: 0
+      pattern: ^[a-zA-Z\s\-' ]+$
+    lastName:
+      type: string
+      maxLength: 30
+      minLength: 0
+      pattern: ^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*$
+    tin:
+      type: string
+      pattern: ^[0-9]{9,12}$
+    contactNumber:
+      type: string
+      pattern: ^[0-9]{10,15}$
+    email:
+      type: string
+    status:
+      type: string
+  required:
+    - firstName
+    - lastName

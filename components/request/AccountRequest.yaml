@@ -1,0 +1,29 @@
+AccountRequest:
+  type: object
+  properties:
+    name:
+      type: string
+      maxLength: 30
+      minLength: 0
+      pattern: ^[a-zA-Z0-9]*$
+    currency:
+      type: string
+      maxLength: 3
+      minLength: 0
+    member:
+      $ref: './MemberRequest.yaml#/MemberRequest'
+    status:
+      type: string
+      enum:
+        - ACTIVE
+        - BLOCKED
+        - UNBLOCKED
+        - DOES_NOT_EXIST
+    accountType:
+      type: string
+    organizationId:
+      type: integer
+      format: int64
+  required:
+    - name
+    - organizationId

@@ -1,12 +1,12 @@
-ErrorResponse404:
+ErrorResponse409:
   type: object
   properties:
     id:
       type: integer
-      default: 404
+      default: 409
     message:
       type: string
-      default: "Requested resource not found"
+      default: "Duplicate resource found"
     description:
       type: string
     error:

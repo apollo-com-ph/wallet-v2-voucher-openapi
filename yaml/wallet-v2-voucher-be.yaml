@@ -1,31 +1,33 @@
 openapi: 3.1.0
 info:
-  title: OpenAPI definition
-  version: v0
+  title: Loyalty v2 Wallet API | Voucher APIs
+  description: |
+    This API Specification is meant to be used by external parties using
+    the Loyalty Wallet API. It includes endpoints for voucher activation and redemption.
+  version: v2
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
   - url: https://apigw-wallet-dev.payconnect.io
     description: Development Environment
-
 tags:
-  - name: voucher-code-controller
-    description: The type Voucher code controller.
-
+  - name: Voucher Activation / Redemption
+    description: |
+      OpenAPI Specification for Voucher Activation / Redemption
 security:
-  - bearerAuth: []
+  - JWT_token: []
   - api_key: []
-
 paths:
   /api/v1/voucher/redeem:
     post:
       tags:
-        - voucher-code-controller
-      summary: Redeem voucher code response entity.
-      description: Redeem voucher code response entity.
+        - Voucher Activation / Redemption
+      summary: Redeem voucher by passing a VoucherEventRequest body.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet voucher 
+        functionality. It allows them to redeem a voucher code for their customers or clients.
       operationId: redeemVoucherCode
       requestBody:
-        description: the request
         content:
           application/json:
             schema:
@@ -33,13 +35,25 @@ paths:
         required: true
       responses:
         '200':
-          description: the response entity
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/200'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/voucher/activate/{id}:
     patch:
       tags:
-        - voucher-code-controller
-      summary: Activate voucher code response entity.
-      description: Activate voucher code response entity.
+        - Voucher Activation / Redemption
+      summary: Activate voucher by passing its ID.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet voucher 
+        functionality. It allows them to activate a shared voucher code for their customers or clients.
       operationId: activateVoucherCode
       parameters:
         - name: id
@@ -51,14 +65,20 @@ paths:
             format: int64
       responses:
         '200':
-          description: the response entity
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/VoucherCodeResponse'
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/200'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
 components:
   securitySchemes:
-    bearerAuth:
+    JWT_token:
       type: http
       scheme: bearer
       bearerFormat: JWT
@@ -66,34 +86,10 @@ components:
       type: apiKey
       in: header
       name: apikey
-
   schemas:
     VoucherEventRequest:
-      type: object
-      properties:
-        code:
-          type: string
-        contactNumber:
-          type: string
-          pattern: ^[0-9]{10,15}$
-      required:
-        - code
-        - contactNumber
+      $ref: '../components/request/VoucherEventRequest.yaml#/VoucherEventRequest'
     VoucherCodeResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        code:
-          type: string
-        amount:
-          type: number
-        dateClaimed:
-          type: string
-          format: date-time
-        claimedById:
-          type: integer
-          format: int64
-        status:
-          type: string
+      $ref: '../components/response/VoucherCodeResponse.yaml#/VoucherCodeResponse'
+    ErrorResponse:
+      $ref: '../components/response/ErrorResponse.yaml#/ErrorResponse'

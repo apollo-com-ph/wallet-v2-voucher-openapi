@@ -4,9 +4,8 @@ window.onload = function() {
   // the following lines will be replaced by docker/configurator, when it runs in a docker-container
   window.ui = SwaggerUIBundle({
     urls: [
-      // { url: 'yaml/wallet-v2-voucher.yaml', name: 'wallet-v2-voucher-be' },
-      { url: 'yaml/wallet-v2-be.yaml', name: 'wallet-v2-be' },
-      { url: 'yaml/wallet-v2-voucher-be.yaml', name: 'wallet-v2-voucher-be' }
+      { url: 'yaml/wallet-v2-be.yaml', name: 'Partner Onboarding APIs' },
+      { url: 'yaml/wallet-v2-voucher-be.yaml', name: 'Voucher APIs' }
 
     ],
     dom_id: '#swagger-ui',

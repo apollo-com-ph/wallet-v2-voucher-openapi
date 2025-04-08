@@ -1,7 +1,12 @@
 openapi: 3.1.0
 info:
-  title: OpenAPI definition
-  version: v0
+  title: Loyalty v2 Wallet API | Partner Onboarding APIs
+  description: |
+    This API Specification is meant to be used by external parties using
+    the Loyalty Wallet API. These APIs are used to manage members, credit accounts, and transactions.
+    It includes endpoints for creating and updating members, credit accounts, and transactions,
+    as well as retrieving account and transaction details.
+  version: v2
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
@@ -46,6 +51,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/MemberResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/creditAccount:
     post:
       tags:
@@ -67,6 +82,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/CreditAccountResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/account:
     post:
       tags:
@@ -88,6 +113,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/AccountResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/wallet/deposit/{id}:
     patch:
       tags:
@@ -117,6 +152,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/AccountResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/creditAccount/{id}:
     get:
       tags:
@@ -139,6 +184,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/CreditAccountDetailsResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
     patch:
       tags:
         - credit-account-controller
@@ -167,6 +222,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/CreditAccountResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/account/wallet/{id}:
     patch:
       tags:
@@ -196,6 +261,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/AccountResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/wallet/account/{id}:
     get:
       tags:
@@ -218,6 +293,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/WalletResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/transaction/{id}:
     get:
       tags:
@@ -240,6 +325,16 @@ paths:
             '*/*':
               schema:
                 $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/transaction/account/{id}:
     get:
       tags:
@@ -278,14 +373,24 @@ paths:
           description: the pageable
           required: true
           schema:
-            $ref: '#/components/schemas/Pageable'
+            $ref: '../components/utils/Pageable.yaml#/Pageable'
       responses:
         '200':
           description: the account transactions by id
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/PagedModel'
+                $ref: '../components/utils/PagedModel.yaml#/PagedModel'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/creditAccount/search:
     get:
       tags:
@@ -340,14 +445,24 @@ paths:
           description: the pageable
           required: true
           schema:
-            $ref: '#/components/schemas/Pageable'
+            $ref: '../components/utils/Pageable.yaml#/Pageable'
       responses:
         '200':
           description: the all credit accounts by
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/PagedModel'
+                $ref: '../components/utils/PagedModel.yaml#/PagedModel'
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
 components:
   securitySchemes:
     bearerAuth:
@@ -358,315 +473,24 @@ components:
       type: apiKey
       in: header
       name: apikey
-
   schemas:
     MemberRequest:
-      type: object
-      properties:
-        firstName:
-          type: string
-          maxLength: 30
-          minLength: 0
-          pattern: ^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*$
-        middleName:
-          type: string
-          maxLength: 30
-          minLength: 0
-          pattern: ^[a-zA-Z\s\-' ]+$
-        lastName:
-          type: string
-          maxLength: 30
-          minLength: 0
-          pattern: ^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*$
-        tin:
-          type: string
-          pattern: ^[0-9]{9,12}$
-        contactNumber:
-          type: string
-          pattern: ^[0-9]{10,15}$
-        email:
-          type: string
-        status:
-          type: string
-      required:
-        - firstName
-        - lastName
+      $ref: '../components/request/MemberRequest.yaml#/MemberRequest'
     MemberResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        firstName:
-          type: string
-        lastName:
-          type: string
-        contactNumber:
-          type: string
-        email:
-          type: string
-        dateCreated:
-          type: string
-          format: date-time
-        status:
-          type: string
-          enum:
-            - ACTIVE
-            - BLOCKED
+      $ref: '../components/response/MemberResponse.yaml#/MemberResponse'
     CreditAccountRequest:
-      type: object
-      properties:
-        contactNumber:
-          type: string
-          pattern: ^[0-9]{10,15}$
-        creditLimit:
-          type: number
-          minimum: 0
-        dayOfPayment:
-          type: string
-          enum:
-            - MONDAY
-            - TUESDAY
-            - WEDNESDAY
-            - THURSDAY
-            - FRIDAY
-            - SATURDAY
-            - SUNDAY
-        merchant:
-          type: string
-          enum:
-            - NW
-            - CK
-            - TNDY
-        organizationId:
-          type: integer
-          format: int64
-        member:
-          $ref: '#/components/schemas/MemberRequest'
-        currency:
-          type: object
-          properties:
-            currencyCode:
-              type: string
-            numericCode:
-              type: integer
-              format: int32
-            numericCodeAsString:
-              type: string
-            displayName:
-              type: string
-            symbol:
-              type: string
-            defaultFractionDigits:
-              type: integer
-              format: int32
-        status:
-          type: string
-          enum:
-            - ACTIVE
-            - BLOCKED
-            - UNBLOCKED
-            - DOES_NOT_EXIST
-      required:
-        - contactNumber
-        - dayOfPayment
-        - merchant
-        - organizationId
+      $ref: '../components/request/CreditAccountRequest.yaml#/CreditAccountRequest'
     AccountResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        member:
-          $ref: '#/components/schemas/MemberResponse'
-        status:
-          type: string
-        dateCreated:
-          type: string
-          format: date-time
-        organizationId:
-          type: integer
-          format: int64
-        accountType:
-          type: string
+      $ref: '../components/response/AccountResponse.yaml#/AccountResponse'
     CreditAccountResponse:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountResponse'
-        creditLimit:
-          type: integer
-          format: int32
+      $ref: '../components/response/CreditAccountResponse.yaml#/CreditAccountResponse'
     AccountRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          maxLength: 30
-          minLength: 0
-          pattern: ^[a-zA-Z0-9]*$
-        currency:
-          type: string
-          maxLength: 3
-          minLength: 0
-        member:
-          $ref: '#/components/schemas/MemberRequest'
-        status:
-          type: string
-          enum:
-            - ACTIVE
-            - BLOCKED
-            - UNBLOCKED
-            - DOES_NOT_EXIST
-        accountType:
-          type: string
-        organizationId:
-          type: integer
-          format: int64
-      required:
-        - name
-        - organizationId
-    Pageable:
-      type: object
-      properties:
-        page:
-          type: integer
-          format: int32
-          minimum: 0
-        size:
-          type: integer
-          format: int32
-          minimum: 1
-        sort:
-          type: array
-          items:
-            type: string
-    PageMetadata:
-      type: object
-      properties:
-        size:
-          type: integer
-          format: int64
-        number:
-          type: integer
-          format: int64
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int64
-    PagedModel:
-      type: object
-      properties:
-        content:
-          type: array
-          items:
-            type: object
-        page:
-          $ref: '#/components/schemas/PageMetadata'
+      $ref: '../components/request/AccountRequest.yaml#/AccountRequest'
     WalletResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        contactNumber:
-          type: string
-        accountType:
-          type: string
-        currency:
-          type: string
-        balance:
-          type: number
+      $ref: '../components/response/WalletResponse.yaml#/WalletResponse'
     TransactionResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        currency:
-          type: string
-        amount:
-          type: number
-        sourceAccountName:
-          type: string
-        destinationAccountName:
-          type: string
-        transactionDate:
-          type: string
-          format: date-time
-        terminalId:
-          type: string
+      $ref: '../components/response/TransactionResponse.yaml#/TransactionResponse'
     CreditAccountDetailsResponse:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountResponse'
-        transactions:
-          $ref: '#/components/schemas/PageObject'
-        creditLimit:
-          type: integer
-          format: int32
-    PageObject:
-      type: object
-      properties:
-        totalElements:
-          type: integer
-          format: int64
-        totalPages:
-          type: integer
-          format: int32
-        pageable:
-          $ref: '#/components/schemas/PageableObject'
-        first:
-          type: boolean
-        last:
-          type: boolean
-        size:
-          type: integer
-          format: int32
-        content:
-          type: array
-          items:
-            $ref: '#/components/schemas/TransactionResponse'
-        number:
-          type: integer
-          format: int32
-        sort:
-          $ref: '#/components/schemas/SortObject'
-        numberOfElements:
-          type: integer
-          format: int32
-        empty:
-          type: boolean
-    PageableObject:
-      type: object
-      properties:
-        paged:
-          type: boolean
-        pageNumber:
-          type: integer
-          format: int32
-        pageSize:
-          type: integer
-          format: int32
-        offset:
-          type: integer
-          format: int64
-        sort:
-          $ref: '#/components/schemas/SortObject'
-        unpaged:
-          type: boolean
-    SortObject:
-      type: object
-      properties:
-        sorted:
-          type: boolean
-        empty:
-          type: boolean
-        unsorted:
-          type: boolean
+      $ref: '../components/response/CreditAccountDetailsResponse.yaml#/CreditAccountDetailsResponse'
+    ErrorResponse:
+      $ref: '../components/response/ErrorResponse.yaml#/ErrorResponse'

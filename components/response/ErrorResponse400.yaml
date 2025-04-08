@@ -6,19 +6,23 @@ ErrorResponse400:
       default: 400
     message:
       type: string
-      default: "Validation failed"
+      enum:
+        - "Validation failed"
+        - "Constraint Validation Error"
+        - "Illegal Argument(s)"
+        - "Illegal State Found"
+        - "Invalid Algorithm Used"
     description:
       type: string
-      default: "uri=/api/v1/voucher/redeem/"
     error:
       type: object
       properties:
-        accountId:
-          type: string
-          example: "Account ID is required."
-        voucherCodeId:
-          type: string
-          example: "Voucher code ID is required."
+        details:
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
     timeStamp:
       type: string
       format: date-time
