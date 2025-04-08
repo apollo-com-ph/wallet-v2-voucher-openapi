@@ -1,7 +1,7 @@
 ErrorResponse409:
   type: object
   properties:
-    id:
+    code:
       type: integer
       default: 409
     message:

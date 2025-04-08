@@ -12,30 +12,34 @@ servers:
     description: Sandbox Environment
   - url: https://apigw-wallet-dev.payconnect.io
     description: Development Environment
-  
 tags:
-  - name: transaction-controller
-    description: The type Transaction controller.
-  - name: member-controller
-    description: The type Member controller.
-  - name: credit-account-controller
-    description: The type Credit account controller.
-  - name: account-controller
-    description: The type Account controller.
-  - name: wallet-controller
-    description: The type Wallet controller.
-
+  - name: Transactions Management
+    description: |
+      Open API Specification for Transactions Management. Used to retrieve transaction details.
+  - name: Members Creation
+    description: |
+      Open API Specification for Member Management. Used to create members.
+  - name: Credit Accounts Management
+    description: |
+      Open API Specification for Credit Account Management. Used to create and update credit accounts.
+  - name: Accounts Management
+    description: |
+      Open API Specification for Account Management. Used to create accounts and manage wallet balances.
+  - name: Wallets Management
+    description: |
+      Open API Specification for Wallet Management. Used to manage wallet balances and transactions.
 security:
-  - bearerAuth: []
+  - JWT_token: []
   - api_key: []
-
 paths:
   /api/v1/member:
     post:
       tags:
-        - member-controller
-      summary: Create member response entity.
-      description: Create member response entity.
+        - Members Creation
+      summary: Create a member by passing a MemberRequest body.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet member 
+        functionality. It allows them to create a new member in the system.
       operationId: createMember
       requestBody:
         description: the request
@@ -64,9 +68,11 @@ paths:
   /api/v1/creditAccount:
     post:
       tags:
-        - credit-account-controller
-      summary: Create credit account response entity.
-      description: Create credit account response entity.
+        - Credit Accounts Management
+      summary: Create a credit account by passing a CreditAccountRequest body.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet credit 
+        account functionality. It allows them to create a new credit account in the system.
       operationId: createCreditAccount
       requestBody:
         description: the request
@@ -77,7 +83,7 @@ paths:
         required: true
       responses:
         '200':
-          description: the response entity
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -95,9 +101,11 @@ paths:
   /api/v1/account:
     post:
       tags:
-        - account-controller
-      summary: Create account response entity.
-      description: Create account response entity.
+        - Accounts Management
+      summary: Create an account by passing an AccountRequest body.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet account 
+        functionality. It allows them to create a new account in the system.
       operationId: createAccount
       requestBody:
         description: the request
@@ -108,7 +116,7 @@ paths:
         required: true
       responses:
         '200':
-          description: the response entity
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -126,9 +134,11 @@ paths:
   /api/v1/wallet/deposit/{id}:
     patch:
       tags:
-        - wallet-controller
-      summary: Add wallet balance by account id response entity.
-      description: Add wallet balance by account id response entity.
+        - Wallets Management
+      summary: Add wallet balance to an account by using its ID.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet account 
+        functionality. It allows them to add a balance to an existing account in the system.
       operationId: addWalletBalanceByAccountId
       parameters:
         - name: id
@@ -147,7 +157,7 @@ paths:
             default: 0
       responses:
         '200':
-          description: the response entity
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -165,9 +175,11 @@ paths:
   /api/v1/creditAccount/{id}:
     get:
       tags:
-        - credit-account-controller
-      summary: Gets credit account by id.
-      description: Gets credit account by id.
+        - Credit Accounts Management
+      summary: Get a specific credit account by using its ID.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet credit
+        account functionality. It allows them to retrieve a credit account by its ID.
       operationId: getCreditAccountById
       parameters:
         - name: id
@@ -179,7 +191,7 @@ paths:
             format: int64
       responses:
         '200':
-          description: the credit account by id
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -194,50 +206,52 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
         '500':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
-    patch:
-      tags:
-        - credit-account-controller
-      summary: Update credit account response entity.
-      description: Update credit account response entity.
-      operationId: updateCreditAccount
-      parameters:
-        - name: id
-          in: path
-          description: the id
-          required: true
-          schema:
-            type: integer
-            format: int64
-      requestBody:
-        description: the request
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CreditAccountRequest'
-        required: true
-      responses:
-        '200':
-          description: the response entity
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/CreditAccountResponse'
-        '400':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
-        '404':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
-        '406':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
-        '409':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
-        '500':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
+    # patch:
+    #   tags:
+    #     - Credit Accounts Management
+    #   summary: Update credit account response entity.
+    #   description: Update credit account response entity.
+    #   operationId: updateCreditAccount
+    #   parameters:
+    #     - name: id
+    #       in: path
+    #       description: the id
+    #       required: true
+    #       schema:
+    #         type: integer
+    #         format: int64
+    #   requestBody:
+    #     description: the request
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref: '#/components/schemas/CreditAccountRequest'
+    #     required: true
+    #   responses:
+    #     '200':
+    #       description: Successful Operation
+    #       content:
+    #         '*/*':
+    #           schema:
+    #             $ref: '#/components/schemas/CreditAccountResponse'
+    #     '400':
+    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+    #     '404':
+    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+    #     '406':
+    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+    #     '409':
+    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+    #     '500':
+    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/account/wallet/{id}:
     patch:
       tags:
-        - account-controller
-      summary: Add wallet balance by account id response entity.
-      description: Add wallet balance by account id response entity.
+        - Accounts Management
+      summary: Add wallet balance to an account by using its ID.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet account 
+        functionality. It allows them to add a balance to an existing account in the system.
       operationId: addWalletBalanceByAccountId_1
       parameters:
         - name: id
@@ -256,7 +270,7 @@ paths:
             default: 0
       responses:
         '200':
-          description: the response entity
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -274,9 +288,11 @@ paths:
   /api/v1/wallet/account/{id}:
     get:
       tags:
-        - wallet-controller
-      summary: Gets wallet balance by account id.
-      description: Gets wallet balance by account id.
+        - Wallets Management
+      summary: Get wallet balance of an account by using its ID.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet account 
+        functionality. It allows them to retrieve the wallet balance of an existing account in the system.
       operationId: getWalletBalanceByAccountId
       parameters:
         - name: id
@@ -288,7 +304,7 @@ paths:
             format: int64
       responses:
         '200':
-          description: the wallet balance by account id
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -306,9 +322,11 @@ paths:
   /api/v1/transaction/{id}:
     get:
       tags:
-        - transaction-controller
-      summary: Gets transaction by id.
-      description: Gets transaction by id.
+        - Transactions Management
+      summary: Get a transaction by using its ID.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet transaction 
+        functionality. It allows them to retrieve transactions in the system.
       operationId: getTransactionById
       parameters:
         - name: id
@@ -320,7 +338,7 @@ paths:
             format: int64
       responses:
         '200':
-          description: the transaction by id
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -338,9 +356,11 @@ paths:
   /api/v1/transaction/account/{id}:
     get:
       tags:
-        - transaction-controller
-      summary: Gets account transactions by id.
-      description: Gets account transactions by id.
+        - Transactions Management
+      summary: Get transactions of an account by using its ID.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet transaction 
+        functionality. It allows them to retrieve previous transactions of an account in the system.
       operationId: getAccountTransactionsById
       parameters:
         - name: id
@@ -376,7 +396,7 @@ paths:
             $ref: '../components/utils/Pageable.yaml#/Pageable'
       responses:
         '200':
-          description: the account transactions by id
+          description: Successful Operation
           content:
             '*/*':
               schema:
@@ -391,81 +411,81 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
         '500':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
-  /api/v1/creditAccount/search:
-    get:
-      tags:
-        - credit-account-controller
-      summary: Gets all credit accounts by.
-      description: Gets all credit accounts by.
-      operationId: getAllCreditAccountsBy
-      parameters:
-        - name: organizationId
-          in: query
-          description: the organization id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: contactNumber
-          in: query
-          description: the contact number
-          required: false
-          schema:
-            type: string
-        - name: status
-          in: query
-          description: the statuses
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-        - name: dateFrom
-          in: query
-          description: the date from
-          required: false
-          schema:
-            type: string
-        - name: dateThru
-          in: query
-          description: the date thru
-          required: false
-          schema:
-            type: string
-        - name: accountType
-          in: query
-          description: the account types
-          required: false
-          schema:
-            type: array
-            items:
-              type: string
-        - name: pageable
-          in: query
-          description: the pageable
-          required: true
-          schema:
-            $ref: '../components/utils/Pageable.yaml#/Pageable'
-      responses:
-        '200':
-          description: the all credit accounts by
-          content:
-            '*/*':
-              schema:
-                $ref: '../components/utils/PagedModel.yaml#/PagedModel'
-        '400':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
-        '404':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
-        '406':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
-        '409':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
-        '500':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
+  # /api/v1/creditAccount/search:
+  #   get:
+  #     tags:
+  #       - Credit Accounts Management
+  #     summary: Get all credit accounts by.
+  #     description: Get all credit accounts by.
+  #     operationId: getAllCreditAccountsBy
+  #     parameters:
+  #       - name: organizationId
+  #         in: query
+  #         description: the organization id
+  #         required: true
+  #         schema:
+  #           type: integer
+  #           format: int64
+  #       - name: contactNumber
+  #         in: query
+  #         description: the contact number
+  #         required: false
+  #         schema:
+  #           type: string
+  #       - name: status
+  #         in: query
+  #         description: the statuses
+  #         required: false
+  #         schema:
+  #           type: array
+  #           items:
+  #             type: string
+  #       - name: dateFrom
+  #         in: query
+  #         description: the date from
+  #         required: false
+  #         schema:
+  #           type: string
+  #       - name: dateThru
+  #         in: query
+  #         description: the date thru
+  #         required: false
+  #         schema:
+  #           type: string
+  #       - name: accountType
+  #         in: query
+  #         description: the account types
+  #         required: false
+  #         schema:
+  #           type: array
+  #           items:
+  #             type: string
+  #       - name: pageable
+  #         in: query
+  #         description: the pageable
+  #         required: true
+  #         schema:
+  #           $ref: '../components/utils/Pageable.yaml#/Pageable'
+  #     responses:
+  #       '200':
+  #         description: Successful Operation
+  #         content:
+  #           '*/*':
+  #             schema:
+  #               $ref: '../components/utils/PagedModel.yaml#/PagedModel'
+  #       '400':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+  #       '404':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+  #       '406':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+  #       '409':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+  #       '500':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
 components:
   securitySchemes:
-    bearerAuth:
+    JWT_token:
       type: http
       scheme: bearer
       bearerFormat: JWT

@@ -1,7 +1,7 @@
 ErrorResponse404:
   type: object
   properties:
-    id:
+    code:
       type: integer
       default: 404
     message:

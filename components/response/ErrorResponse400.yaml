@@ -1,7 +1,7 @@
 ErrorResponse400:
   type: object
   properties:
-    id:
+    code:
       type: integer
       default: 400
     message:
