@@ -8,8 +8,6 @@ info:
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
-  - url: https://apigw-wallet-dev.payconnect.io
-    description: Development Environment
 tags:
   - name: Voucher Activation / Redemption
     description: |

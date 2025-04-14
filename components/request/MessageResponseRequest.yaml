@@ -1,0 +1,14 @@
+MessageResponseRequest:
+  type: object
+  properties:
+    code:
+      type: string
+      maxLength: 2147483647
+      minLength: 0
+    description:
+      type: string
+      maxLength: 2147483647
+      minLength: 0
+  required:
+    - code
+    - description

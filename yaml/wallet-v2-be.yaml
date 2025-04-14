@@ -10,8 +10,6 @@ info:
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
-  - url: https://apigw-wallet-dev.payconnect.io
-    description: Development Environment
 tags:
   - name: Transactions Management
     description: |
@@ -131,6 +129,40 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
         '500':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
+  /api/v1/transaction:
+    post:
+      tags:
+        - Transactions Management
+      summary: Add or update an account's wallet balance by passing a TransactionRequest body.
+      description: |
+        This API endpoint is intended for external parties integrating with the loyalty wallet transaction 
+        functionality. It allows them to intiate an add or charge transaction for an account in the system.
+      operationId: createTransaction
+      requestBody:
+        description: |
+          1. For TOPUP transaction, set transactionType to 0000 and processingCode to 002000.
+          2. For PAYMENT transaction, set transactionType to 0210 and processingCode to 001000.
+          3. For REVERSE transaction, set transactionType to 0410 and processingCode to 004000.
+          4. For TRANSFER transaction, set transactionType to 0000 and processingCode to 004000.
+          5. For REDEMPTION transaction, set transactionType to 0000 and processingCode to 005000.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransactionRequest'
+        required: true
+      responses:
+        '200':
+          description: Successful Operation
+        '400':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '404':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+        '406':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+        '409':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+        '500':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/wallet/deposit/{id}:
     patch:
       tags:
@@ -206,44 +238,6 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
         '500':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
-    # patch:
-    #   tags:
-    #     - Credit Accounts Management
-    #   summary: Update credit account response entity.
-    #   description: Update credit account response entity.
-    #   operationId: updateCreditAccount
-    #   parameters:
-    #     - name: id
-    #       in: path
-    #       description: the id
-    #       required: true
-    #       schema:
-    #         type: integer
-    #         format: int64
-    #   requestBody:
-    #     description: the request
-    #     content:
-    #       application/json:
-    #         schema:
-    #           $ref: '#/components/schemas/CreditAccountRequest'
-    #     required: true
-    #   responses:
-    #     '200':
-    #       description: Successful Operation
-    #       content:
-    #         '*/*':
-    #           schema:
-    #             $ref: '#/components/schemas/CreditAccountResponse'
-    #     '400':
-    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
-    #     '404':
-    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
-    #     '406':
-    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
-    #     '409':
-    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
-    #     '500':
-    #       $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/account/wallet/{id}:
     patch:
       tags:
@@ -411,78 +405,6 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
         '500':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
-  # /api/v1/creditAccount/search:
-  #   get:
-  #     tags:
-  #       - Credit Accounts Management
-  #     summary: Get all credit accounts by.
-  #     description: Get all credit accounts by.
-  #     operationId: getAllCreditAccountsBy
-  #     parameters:
-  #       - name: organizationId
-  #         in: query
-  #         description: the organization id
-  #         required: true
-  #         schema:
-  #           type: integer
-  #           format: int64
-  #       - name: contactNumber
-  #         in: query
-  #         description: the contact number
-  #         required: false
-  #         schema:
-  #           type: string
-  #       - name: status
-  #         in: query
-  #         description: the statuses
-  #         required: false
-  #         schema:
-  #           type: array
-  #           items:
-  #             type: string
-  #       - name: dateFrom
-  #         in: query
-  #         description: the date from
-  #         required: false
-  #         schema:
-  #           type: string
-  #       - name: dateThru
-  #         in: query
-  #         description: the date thru
-  #         required: false
-  #         schema:
-  #           type: string
-  #       - name: accountType
-  #         in: query
-  #         description: the account types
-  #         required: false
-  #         schema:
-  #           type: array
-  #           items:
-  #             type: string
-  #       - name: pageable
-  #         in: query
-  #         description: the pageable
-  #         required: true
-  #         schema:
-  #           $ref: '../components/utils/Pageable.yaml#/Pageable'
-  #     responses:
-  #       '200':
-  #         description: Successful Operation
-  #         content:
-  #           '*/*':
-  #             schema:
-  #               $ref: '../components/utils/PagedModel.yaml#/PagedModel'
-  #       '400':
-  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
-  #       '404':
-  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
-  #       '406':
-  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
-  #       '409':
-  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
-  #       '500':
-  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
 components:
   securitySchemes:
     JWT_token:
@@ -512,5 +434,7 @@ components:
       $ref: '../components/response/TransactionResponse.yaml#/TransactionResponse'
     CreditAccountDetailsResponse:
       $ref: '../components/response/CreditAccountDetailsResponse.yaml#/CreditAccountDetailsResponse'
+    TransactionRequest:
+      $ref: '../components/request/TransactionRequest.yaml#/TransactionRequest'
     ErrorResponse:
       $ref: '../components/response/ErrorResponse.yaml#/ErrorResponse'
