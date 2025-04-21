@@ -8,6 +8,8 @@ info:
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
+  - url: https://apigw-wallet-test.payconnect.io
+    description: Test Environment
 tags:
   - name: Voucher Activation / Redemption
     description: |
@@ -61,6 +63,7 @@ paths:
           schema:
             type: integer
             format: int64
+          example: 100
       responses:
         '200':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/200'

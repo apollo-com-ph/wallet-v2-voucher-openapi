@@ -5,10 +5,12 @@ MessageResponseRequest:
       type: string
       maxLength: 2147483647
       minLength: 0
+      example: "00"
     description:
       type: string
       maxLength: 2147483647
       minLength: 0
+      example: "Payment via GCash"
   required:
     - code
     - description

@@ -6,26 +6,33 @@ MemberRequest:
       maxLength: 30
       minLength: 0
       pattern: ^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*$
+      example: "John"
     middleName:
       type: string
       maxLength: 30
       minLength: 0
       pattern: ^[a-zA-Z\s\-' ]+$
+      example: "Doe"
     lastName:
       type: string
       maxLength: 30
       minLength: 0
       pattern: ^[a-zA-Z]+(?:[\s'-][a-zA-Z]+)*$
+      example: "Smith"
     tin:
       type: string
       pattern: ^[0-9]{9,12}$
+      example: "123456789"
     contactNumber:
       type: string
       pattern: ^[0-9]{10,15}$
+      example: "09123456789"
     email:
       type: string
+      example: "john@smith.com"
     status:
       type: string
+      example: "Active"
   required:
     - firstName
     - lastName
