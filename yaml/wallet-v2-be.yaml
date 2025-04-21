@@ -10,6 +10,8 @@ info:
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
+  - url: https://apigw-wallet-test.payconnect.io
+    description: Test Environment
   - url: https://apigw-wallet-dev.payconnect.io
     description: Development Environment
   - url: https://apigw-wallet-test.payconnect.io
@@ -192,6 +194,7 @@ paths:
           schema:
             type: integer
             format: int64
+          example: 1
         - name: amount
           in: query
           description: the amount
@@ -199,6 +202,7 @@ paths:
           schema:
             type: number
             default: 0
+          example: 10
       responses:
         '200':
           description: Successful Operation
@@ -254,49 +258,49 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
         '500':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
-  /api/v1/account/wallet/{id}:
-    patch:
-      tags:
-        - Accounts Management
-      summary: Add wallet balance to an account by using its ID.
-      description: |
-        This API endpoint is intended for external parties integrating with the loyalty wallet account 
-        functionality. It allows them to add a balance to an existing account in the system.
-      operationId: addWalletBalanceByAccountId_1
-      parameters:
-        - name: id
-          in: path
-          description: the id
-          required: true
-          schema:
-            type: integer
-            format: int64
-        - name: amount
-          in: query
-          description: the amount
-          required: false
-          schema:
-            type: number
-            default: 0
-      responses:
-        '200':
-          description: Successful Operation
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/AccountResponse'
-        '400':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
-        '401':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
-        '404':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
-        '406':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
-        '409':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
-        '500':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
+  # /api/v1/account/wallet/{id}:
+  #   patch:
+  #     tags:
+  #       - Accounts Management
+  #     summary: Add wallet balance to an account by using its ID.
+  #     description: |
+  #       This API endpoint is intended for external parties integrating with the loyalty wallet account 
+  #       functionality. It allows them to add a balance to an existing account in the system.
+  #     operationId: addWalletBalanceByAccountId_1
+  #     parameters:
+  #       - name: id
+  #         in: path
+  #         description: the id
+  #         required: true
+  #         schema:
+  #           type: integer
+  #           format: int64
+  #         example: 1
+  #       - name: amount
+  #         in: query
+  #         description: the amount
+  #         required: false
+  #         schema:
+  #           type: number
+  #           default: 0
+  #         example: 100
+  #     responses:
+  #       '200':
+  #         description: Successful Operation
+  #         content:
+  #           '*/*':
+  #             schema:
+  #               $ref: '#/components/schemas/AccountResponse'
+  #       '400':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+  #       '404':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+  #       '406':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+  #       '409':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+  #       '500':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/wallet/account/{id}:
     get:
       tags:
@@ -314,6 +318,7 @@ paths:
           schema:
             type: integer
             format: int64
+          example: 1
       responses:
         '200':
           description: Successful Operation
@@ -350,6 +355,7 @@ paths:
           schema:
             type: integer
             format: int64
+          example: 1
       responses:
         '200':
           description: Successful Operation
@@ -386,6 +392,7 @@ paths:
           schema:
             type: integer
             format: int64
+          example: 1
         - name: transactionType
           in: query
           description: the transaction type
@@ -410,6 +417,9 @@ paths:
           required: true
           schema:
             $ref: '../components/utils/Pageable.yaml#/Pageable'
+          example:
+            page: 1
+            size: 10
       responses:
         '200':
           description: Successful Operation

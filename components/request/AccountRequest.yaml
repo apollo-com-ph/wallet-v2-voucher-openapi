@@ -6,10 +6,12 @@ AccountRequest:
       maxLength: 30
       minLength: 0
       pattern: ^[a-zA-Z0-9]*$
+      example: "JohnDoe"
     currency:
       type: string
       maxLength: 3
       minLength: 0
+      example: "PHP"
     member:
       $ref: './MemberRequest.yaml#/MemberRequest'
     status:
@@ -21,9 +23,15 @@ AccountRequest:
         - DOES_NOT_EXIST
     accountType:
       type: string
+      enum:
+        - REGULAR_WALLET
+        - TEAM_WALLET
+        - MASTER_WALLET
+        - SUPER_WALLET
     organizationId:
       type: integer
       format: int64
+      example: 1
   required:
     - name
     - organizationId

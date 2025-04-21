@@ -3,9 +3,11 @@ VoucherEventRequest:
   properties:
     code:
       type: string
+      example: "J92TN6UVPHG9R"
     contactNumber:
       type: string
       pattern: ^[0-9]{10,15}$
+      example: "09123456789"
   required:
     - code
     - contactNumber

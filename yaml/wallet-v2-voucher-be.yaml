@@ -12,6 +12,8 @@ servers:
     description: Development Environment
   - url: https://apigw-wallet-test.payconnect.io
     description: Test Environment
+  - url: https://apigw-wallet-test.payconnect.io
+    description: Test Environment
 tags:
   - name: Voucher Activation / Redemption
     description: |
@@ -67,6 +69,7 @@ paths:
           schema:
             type: integer
             format: int64
+          example: 100
       responses:
         '200':
           description: Successful Operation

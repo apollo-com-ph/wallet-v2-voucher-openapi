@@ -8,6 +8,7 @@ TransactionRequest:
         - "0210"
         - "0410"
         - "0000"
+      example: "0000"
     processingCode:
       type: string
       enum:
@@ -16,33 +17,43 @@ TransactionRequest:
         - "001000"
         - "004000"
         - "005000"
+      example: "002000"
     amount:
       type: number
+      example: 100
     traceNumber:
       type: string
+      example: "000000000000"
     transactionDate:
       type: string
       format: date-time
     referenceNumber:
       type: string
+      example: "test"
     authorizationCode:
       type: string
+      example: "00000000000000000000"
     currency:
       type: string
       maxLength: 3
       minLength: 0
+      example: "PHP"
     sourceAccountId:
       type: integer
       format: int64
+      example: 1
     destinationAccountId:
       type: integer
       format: int64
+      example: 2
     messageResponse:
       $ref: './MessageResponseRequest.yaml#/MessageResponseRequest'
     securityToken:
       type: string
+      example: "0000000000000000000000000000000000000000"
     terminalId:
       type: string
+      example: "OpenAPI spec"
   required:
     - amount
     - authorizationCode
