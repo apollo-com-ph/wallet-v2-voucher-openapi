@@ -1,15 +1,21 @@
 '200':
   description: Successful Operation
-  content:
-    '*/*':
-      schema:
-        $ref: './VoucherCodeResponse.yaml#/VoucherCodeResponse'
+  # content:
+  #   '*/*':
+  #     schema:
+  #       $ref: './VoucherCodeResponse.yaml#/VoucherCodeResponse'
 '400':
   description: Bad Request
   content:
     application/json:
       schema:
         $ref: './ErrorResponse400.yaml#/ErrorResponse400'
+'401':
+  description: Unauthorized
+  content:
+    application/json:
+      schema:
+        $ref: './ErrorResponse401.yaml#/ErrorResponse401'
 '404':
   description: Not Found
   content:

@@ -10,6 +10,10 @@ info:
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
+  - url: https://apigw-wallet-dev.payconnect.io
+    description: Development Environment
+  - url: https://apigw-wallet-test.payconnect.io
+    description: Test Environment
 tags:
   - name: Transactions Management
     description: |
@@ -47,14 +51,16 @@ paths:
               $ref: '#/components/schemas/MemberRequest'
         required: true
       responses:
-        '200':
-          description: the response entity
+        '201':
+          description: Successful Operation
           content:
             '*/*':
               schema:
                 $ref: '#/components/schemas/MemberResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -80,7 +86,7 @@ paths:
               $ref: '#/components/schemas/CreditAccountRequest'
         required: true
       responses:
-        '200':
+        '201':
           description: Successful Operation
           content:
             '*/*':
@@ -88,6 +94,8 @@ paths:
                 $ref: '#/components/schemas/CreditAccountResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -113,7 +121,7 @@ paths:
               $ref: '#/components/schemas/AccountRequest'
         required: true
       responses:
-        '200':
+        '201':
           description: Successful Operation
           content:
             '*/*':
@@ -121,6 +129,8 @@ paths:
                 $ref: '#/components/schemas/AccountResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -155,6 +165,8 @@ paths:
           description: Successful Operation
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -196,6 +208,8 @@ paths:
                 $ref: '#/components/schemas/AccountResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -230,6 +244,8 @@ paths:
                 $ref: '#/components/schemas/CreditAccountDetailsResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -271,6 +287,8 @@ paths:
                 $ref: '#/components/schemas/AccountResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -305,6 +323,8 @@ paths:
                 $ref: '#/components/schemas/WalletResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -339,6 +359,8 @@ paths:
                 $ref: '#/components/schemas/TransactionResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -397,6 +419,8 @@ paths:
                 $ref: '../components/utils/PagedModel.yaml#/PagedModel'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':

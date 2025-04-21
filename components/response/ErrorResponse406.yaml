@@ -13,14 +13,11 @@ ErrorResponse406:
     description:
       type: string
     error:
-      type: object
-      properties:
-        details:
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+      oneOf:
+        - type: string
+        - type: object
+          additionalProperties:
+            type: string
     timeStamp:
       type: string
       format: date-time

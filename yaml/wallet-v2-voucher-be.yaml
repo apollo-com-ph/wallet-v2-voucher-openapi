@@ -8,6 +8,10 @@ info:
 servers:
   - url: https://apigw-wallet-sbx.payconnect.io
     description: Sandbox Environment
+  - url: https://apigw-wallet-dev.payconnect.io
+    description: Development Environment
+  - url: https://apigw-wallet-test.payconnect.io
+    description: Test Environment
 tags:
   - name: Voucher Activation / Redemption
     description: |
@@ -36,6 +40,8 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/200'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+        '401':
+          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
         '404':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
         '406':
@@ -63,7 +69,11 @@ paths:
             format: int64
       responses:
         '200':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/200'
+          description: Successful Operation
+          content:
+            '*/*':
+              schema:
+                $ref: '../components/response/VoucherCodeResponse.yaml#/VoucherCodeResponse'
         '400':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
         '404':

@@ -1,0 +1,12 @@
+ErrorResponse401:
+  type: object
+  properties:
+    message:
+      type: string
+      enum:
+        - "Unauthorized"
+        - "Invalid Token"
+        - "Authorization Failed"
+        - "Missing API key in request"
+        - "Missing JWT token in request"
+        - "JWT token Invalid"
