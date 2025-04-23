@@ -14,8 +14,6 @@ servers:
     description: Test Environment
   - url: https://apigw-wallet-dev.payconnect.io
     description: Development Environment
-  - url: https://apigw-wallet-test.payconnect.io
-    description: Test Environment
 tags:
   - name: Transactions Management
     description: |
