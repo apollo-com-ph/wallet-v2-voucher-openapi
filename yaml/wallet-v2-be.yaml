@@ -175,51 +175,51 @@ paths:
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
         '500':
           $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
-  /api/v1/wallet/deposit/{id}:
-    patch:
-      tags:
-        - Wallets Management
-      summary: Add wallet balance to an account by using its ID.
-      description: |
-        This API endpoint is intended for external parties integrating with the loyalty wallet account 
-        functionality. It allows them to add a balance to an existing account in the system.
-      operationId: addWalletBalanceByAccountId
-      parameters:
-        - name: id
-          in: path
-          description: the id
-          required: true
-          schema:
-            type: integer
-            format: int64
-          example: 1
-        - name: amount
-          in: query
-          description: the amount
-          required: false
-          schema:
-            type: number
-            default: 0
-          example: 10
-      responses:
-        '200':
-          description: Successful Operation
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/AccountResponse'
-        '400':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
-        '401':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
-        '404':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
-        '406':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
-        '409':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
-        '500':
-          $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
+  # /api/v1/wallet/deposit/{id}:
+  #   patch:
+  #     tags:
+  #       - Wallets Management
+  #     summary: Add wallet balance to an account by using its ID.
+  #     description: |
+  #       This API endpoint is intended for external parties integrating with the loyalty wallet account 
+  #       functionality. It allows them to add a balance to an existing account in the system.
+  #     operationId: addWalletBalanceByAccountId
+  #     parameters:
+  #       - name: id
+  #         in: path
+  #         description: the id
+  #         required: true
+  #         schema:
+  #           type: integer
+  #           format: int64
+  #         example: 1
+  #       - name: amount
+  #         in: query
+  #         description: the amount
+  #         required: false
+  #         schema:
+  #           type: number
+  #           default: 0
+  #         example: 10
+  #     responses:
+  #       '200':
+  #         description: Successful Operation
+  #         content:
+  #           '*/*':
+  #             schema:
+  #               $ref: '#/components/schemas/AccountResponse'
+  #       '400':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/400'
+  #       '401':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/401'
+  #       '404':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/404'
+  #       '406':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/406'
+  #       '409':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/409'
+  #       '500':
+  #         $ref: '../components/response/wallet-v2-voucher-be-response.yaml#/500'
   /api/v1/creditAccount/{id}:
     get:
       tags:
